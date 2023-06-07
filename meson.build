@@ -59,6 +59,8 @@ phosphor_logging = dependency('phosphor-logging',
     fallback: ['phosphor-logging', 'phosphor_logging_dep'])
 
 sdbusplus = dependency('sdbusplus', fallback: [ 'sdbusplus', 'sdbusplus_dep' ])
+nlohmann_json = dependency('nlohmann_json', fallback: [ 'nlohmann_json', 'nlohmann_json_dep' ])
+cli11 = dependency('cli11', fallback: [ 'cli11', 'cli11_dep' ])
 
 libvpdecc_src = files(
     'vpdecc/vpdecc.c',
@@ -147,7 +149,9 @@ if get_option('ibm-parser').enabled()
                                  dependencies: [
                                    sdbusplus,
                                    phosphor_logging,
-                                   libgpiodcxx
+                                   libgpiodcxx,
+                                   cli11,
+                                   nlohmann-json,
                                    ],
                                  link_with : libvpdecc,
                                  install: true,
